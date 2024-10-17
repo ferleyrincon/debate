@@ -1,0 +1,51 @@
+{{ extends 'global/Page.html' }}
+{{ block title }} Por favor, elija su estrategia {{ endblock }}
+
+{{ block content }}
+
+<div class="card bg-light m-3">
+    <div class="card-body">
+        <style>
+            .justified-text {
+                text-align: justify;
+            }
+        </style>
+
+        <p class="justified-text">
+            En esta ronda:
+
+            <ul>
+                <li>Si ambos cooperan (estrategia P), los pagos son 10000 para cada uno.</li>
+                <li>Si ambos compiten (estrategia H), solo obtendrán 7500 para cada uno.</li>
+                <li>Si uno compite (estrategia H) y el otro coopera (estrategia P), la persona competitiva ganará {{ pago_H_A }}, mientras que la persona cooperativa ganará {{ pago_P_A }}.</li>
+    
+            </ul>
+        </p>
+    </div>
+</div>
+
+<div class="form-group required">
+    <table class="table table-bordered text-center" style="width: auto; margin: auto">
+        <tr>
+            <th colspan="2" rowspan="2"></th>
+            <th colspan="2"> Estrategia del otro participante </th>
+        </tr>
+        <tr>
+            <th>H (Competitiva)</th>
+            <th>P (Cooperativa)</th>
+        </tr>
+        <tr>
+            <th rowspan="2"><span>Elija su estrategia</span></th>
+            <td><button name="competir" value="True" class="btn btn-primary btn-large">H (Competitiva)</button></td>
+            <td>{{C.PAGO_COMP}}, {{C.PAGO_COMP}}</td>
+            <td>{{ pago_H_A }}, {{ pago_P_A }}</td>
+        </tr>
+        <tr>
+            <td><button name="competir" value="False" class="btn btn-primary btn-large">P (Cooperativa)</button></td>
+            <td>{{pago_P_A}}, {{ pago_H_A }}</td>
+            <td>{{C.PAGO_COO}}, {{C.PAGO_COO}}</td>
+        </tr>
+    </table>
+</div>
+
+{{ endblock }}

@@ -1,0 +1,30 @@
+{{ extends 'global/Page.html' }}
+{% load static %}
+
+{{ block title }}Resultados{{ endblock }}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ static 'global/results.css' }}">
+{% endblock %}
+
+{{ block content }}
+
+<div class="background-modern">
+    <div class="content-container">
+        <p>
+            {{ if same_choice }}
+                Ambos han decidido la estrategia {{ mi_decision }}.
+            {{ else }}
+                Has elegido la estrategia {{ mi_decision }} y la otra persona ha elegido la estrategia {{ opponent_decision }}.
+            {{ endif }}
+        </p>
+        
+        <p>
+            Por lo tanto, en la ronda {{ ronda }} has ganado {{ player.payoff }}.
+        </p>
+    </div>
+</div>
+
+{{ next_button }}
+
+{{ endblock }}

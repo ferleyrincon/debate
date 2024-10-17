@@ -1,0 +1,52 @@
+{{ extends 'global/Page.html' }}
+{{ block title }}Posición final{{ endblock }}
+
+{{ block content }}
+
+<p>
+    Ahora, queremos conocer cuál es su posición respecto al dilema presentado ahora que ha tenido el debate con su pareja.
+</p>
+
+<h2>Por favor, cuéntenos:</h2>
+
+<b>¿Viviana debe denunciar a los responsables de la contaminación del río Atrato?</b>
+
+<form method="post">
+    <!-- Campo para 'posicion' -->
+    <div>
+        <p>{{ form.posicion_final.label }}</p>
+        {{ form.posicion_final }}
+    </div>
+    
+    <!-- Campo para 'exp_emp', inicialmente oculto -->
+    <div id="exp_empfinal" style="display: none; margin-top: 20px;">
+        <p>{{ form.exp_empfinal.label }}</p>
+        {{ form.exp_empfinal }}
+    </div>
+    
+</form>
+<p>
+
+</p>
+
+{{ next_button }}
+
+<script>
+    // Selecciona los elementos HTML necesarios
+    const posicionfinalRadios = document.querySelectorAll('input[name="posicion_final"]');
+    const posMayoriafinalDiv = document.getElementById('exp_empfinal');
+
+    // Añade un evento a los radio buttons de 'posicion'
+    posicionfinalRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Muestra el campo 'pos_mayoria_final' cuando se selecciona una opción en 'posicion'
+            posMayoriafinalDiv.style.display = 'block';
+        });
+    });
+</script>
+
+<p>
+    
+</p>
+
+{{ endblock }}
