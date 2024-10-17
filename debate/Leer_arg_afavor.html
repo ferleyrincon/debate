@@ -1,0 +1,20 @@
+{{ extends 'global/Page.html' }}
+{{ block title }}Argumento del otro participante{{ endblock }}
+
+{{ block content }}
+
+<p>
+    El argumento del otro participante es el siguiente:
+</p>
+
+<div style="border: 2px solid #4CAF50; padding: 20px; margin: 20px 0; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px;">
+    {{group.arg_a_favor}}
+</div>
+
+<p>
+
+</p>
+
+{{ next_button }}
+
+{{ endblock }}

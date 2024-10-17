@@ -1,0 +1,86 @@
+{{ block title }}
+    Calificación de argumentos
+    <style>
+        .form-data {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9; 
+            margin: 20px; 
+        }
+
+        .argument-group {
+            display: flex;
+            align-items: center; 
+            margin-bottom: 15px;
+        }
+
+        .argument-group p {
+            margin-right: 10px;
+            margin: 0 15px; 
+        }
+
+        .argument-group input {
+            margin-left: 10px;
+            margin-right: 10px; 
+            
+        }
+
+        .info {
+            text-align: center;
+            margin-bottom: 20px; 
+            font-weight: bold; 
+        }
+
+        .info p {
+            display: inline-block;
+            margin: 0 100px; 
+        }
+    </style>
+{{ endblock }}
+
+{{ block content }}
+    <p>
+        Califica el siguiente argumento <p> "POSTURA" </p>
+    </p>
+
+    <p>
+        <i> "ARGUMENTO DE DICHA POSTURA" </i>
+    </p>
+
+    <p>
+        Califica el siguiente argumento <p> "POSTURA" </p>
+    </p>
+
+    <p>
+        <i> "ARGUMENTO DE DICHA POSTURA" </i>
+    </p>
+
+    <h2>Por favor, ingrese sus calificaciones</h2>
+    <div class="form-data">
+        <div class="info">
+            <p>Calificación</p><p>Asignación</p>
+        </div>
+        <form>
+            <div class="argument-group">
+                <p>Usted:</p>
+                {{ form.value_1_1 }} {{ form.value_1_2 }}
+            </div>
+            <div class="argument-group">
+                <p>Pareja:</p>
+                {{ form.value_2_1 }} {{ form.value_2_2 }}
+            </div>
+            <div class="argument-group">
+                <p>Jugador a favor:</p>
+                {{ form.value_3_1 }} {{ form.value_3_2 }}
+            </div>
+            <div class="argument-group">
+                <p>Jugador en contra:</p>
+                {{ form.value_4_1 }} {{ form.value_4_2 }}
+            </div>
+        </form>
+    </div>
+
+    {{ next_button }}
+
+{{ endblock }}

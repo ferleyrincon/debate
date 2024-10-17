@@ -1,0 +1,64 @@
+{{ extends 'global/Page.html' }}
+{{ block title }}Etapa 1 - Intercambio de argumentos{{ endblock }}
+
+{{ block content }}
+
+<p>
+    Por favor, lea la siguiente situación:
+</p>
+
+<div style="border: 2px solid #4CAF50; padding: 20px; margin: 20px 0; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px;">
+    <p style="text-align: justify;">
+        La alcaldía municipal está tomando decisiones sobre el manejo de las basuras en una ciudad. Las basuras regadas en la calle están afectando la imagen de la ciudad y generando problemas sanitarios. Para solucionar este problema, se han implementado nuevas regulaciones ambientales y se ha aumentado el gasto público para mejorar la recolección de basuras. Sin embargo, esto ha generado un conflicto entre las empresas de aseo y los recicladores informales. 
+    </p>
+    <p style="text-align: justify;">
+        Las empresas de aseo han propuesto prohibir que los recicladores informales manipulen las basuras en la calle. Las empresas acusan a los recicladores informales de romper las bolsas de basura y dificultar las labores de recolección. Por su parte, los recicladores acusan a las empresas de no separar adecuadamente las basuras y querer dejarlos sin trabajo.  
+    </p>
+    <p style="text-align: justify;">
+        La propuesta de prohibición beneficiaría a las empresas de aseo al facilitar la recolección y centralizar el manejo de los residuos, pero dejaría a los recicladores informales en una situación de vulnerabilidad económica. Además, los recicladores podrían organizar protestas frente a las instalaciones de las empresas, lo que podría interrumpir el funcionamiento de las operaciones de recolección de basura. 
+    </p>
+    <p style="text-align: justify;">
+        A pesar de las diferencias, existe la posibilidad de que ambas partes lleguen a un acuerdo. Las empresas y los recicladores podrían colaborar si se establecieran mecanismos para proporcionar a los recicladores informales las herramientas y formación necesarias para realizar su trabajo sin que la basura quede dispersa en las calles. Para esto, la alcaldía ha propuesto crear mesas de diálogo para facilitar un trabajo coordinado entre las empresas de aseo y los recicladores informales, con el objetivo de mejorar la gestión de los residuos. Sin embargo, hasta el momento, ha sido difícil llegar a un acuerdo que satisfaga a ambas partes. 
+    </p>
+</div>
+
+<h2>Pregunta</h2>
+
+<b>¿La Alcaldía debe prohibir a los recicladores informales que manipules basura en las calles?</b>
+
+<form method="post">
+    <!-- Campo para 'posicion' -->
+    <div>
+        <p>{{ form.posicion_afin.label }}</p>
+        {{ form.posicion_afin }}
+    </div>
+    
+    <!-- Campo para 'exp_emp', inicialmente oculto -->
+    <div id="exp_emp" style="display: none; margin-top: 20px;">
+        <p>{{ form.exp_emp.label }}</p>
+        {{ form.exp_emp }}
+    </div>
+</form>
+
+<p>
+
+</p>   
+{{ next_button }}
+
+<script>
+    // Selecciona los elementos HTML necesarios
+    const posicionRadios = document.querySelectorAll('input[name="posicion_afin"]');
+    const posMayoriaDiv = document.getElementById('exp_emp');
+
+    // Añade un evento a los radio buttons de 'posicion'
+    posicionRadios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            // Muestra el campo 'pos_mayoria' cuando se selecciona una opción en 'posicion'
+            posMayoriaDiv.style.display = 'block';
+        });
+    });
+</script>
+
+
+
+{{ endblock }}
