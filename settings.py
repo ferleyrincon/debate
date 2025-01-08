@@ -4,7 +4,7 @@ SESSION_CONFIGS = [
     dict(
         name='debate_conflict', 
         num_demo_participants=4, 
-        app_sequence=['debate','calificacion','conflict'])
+        app_sequence=['debate','conflict','results'])
         ]
 LANGUAGE_CODE = 'es'
 REAL_WORLD_CURRENCY_CODE = 'USD'
