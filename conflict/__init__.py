@@ -1,117 +1,111 @@
-
 from otree.api import *
 import random
-c = cu
 
-doc = '\nThis is a one-shot "Prisoner\'s Dilemma". Two players are asked separately\nwhether they want to cooperate or defect. Their choices directly determine the\npayoffs.\n'
 class C(BaseConstants):
-    NAME_IN_URL = 'prisoner'
+    NAME_IN_URL = 'PD_Chat'
     PLAYERS_PER_GROUP = 2
-    NUM_ROUNDS = 6
-    DECISIONES = ['A','B','C','D','E']
-    MONTO = 20000
-    PAGO_COMP = 7500
-    PAGO_COO = 10000
-    PAGOS_H = [13000,14000,16000,18000,20000]
-    # PAGOS_P = [cu(8000),cu(6000),cu(4000),cu(2000),cu(0)]
-    INSTRUCTIONS_TEMPLATE = 'conflict/instructions.html'
+    NUM_ROUNDS = 4
+    
+    MUTUAL_COOPERATE = 16000
+    MUTUAL_DEFECT = 4000
+    X_VALUES = [8000, 8000, 24000, 24000]
+    Y_VALUES = [8000, 0, 8000, 0]
+    ORDER = [0, 1, 2, 3]
 
 class Subsession(BaseSubsession):
     pass
 
 class Group(BaseGroup):
-    order_pagos_H = models.StringField()  # Para almacenar la lista aleatorizada como cadena
-    order_pagos_P = models.StringField()
-    pass
+    levels = models.StringField()
+    selected_round = models.IntegerField() 
 
 class Player(BasePlayer):
-    competir = models.BooleanField(choices=[[True, 'H (Competitiva)'], [False, ' P (Cooperativa)']], doc='Decision del participante', widget=widgets.RadioSelect)
-    
-# FUNCTIONS
+    cooperate = models.BooleanField(
+        choices=[[True, 'A'], [False, 'B']],
+        doc="""This player's decision""",
+        widget=widgets.RadioSelect,
+    )
+    descrip_cooperate = models.LongStringField(label='Describa cómo eligió entre la Opción A y la Opción B')
+
+def creating_session(self):
+    for group in self.get_groups():
+        group.selected_round = random.randint(1, C.NUM_ROUNDS)
+        r_list = random.sample(C.ORDER, len(C.ORDER))
+        group.levels = ",".join(map(str, r_list))
+
 def set_payoffs(group: Group):
-    for p in group.get_players():
-        set_payoff(p)
+        for p in group.get_players():
+            set_payoff(p)
+
+def get_payoff_for_round(player: Player, other_player_choice: bool):
+    round_number = player.round_number
+    level_index = round_number - 1 
+    
+    if player.cooperate and other_player_choice:
+        return C.MUTUAL_COOPERATE
+    elif not player.cooperate and not other_player_choice:
+        return C.MUTUAL_DEFECT
+    elif player.cooperate and not other_player_choice:
+        return C.Y_VALUES[level_index]
+    else:
+        return C.X_VALUES[level_index]
 
 def other_player(player: Player):
-    group = player.group
     return player.get_others_in_group()[0]
 
 def set_payoff(player: Player):
-    ronda = player.round_number
-    pago_H_A = player.session.vars['pagos_h_list'][ronda - 2]
-    pago_P_A = player.session.vars['pagos_p_list'][ronda - 2]
-    payoff_matrix = {
-        (False, True): pago_H_A,
-        (True, True): C.PAGO_COMP,
-        (False, False): C.PAGO_COO,
-        (True, False): pago_P_A,
-    }
     other = other_player(player)
-    player.payoff = payoff_matrix[(player.competir, other.competir)]
+    player.payoff = get_payoff_for_round(player, other.cooperate)
 
-def creating_session(self: Subsession):
-    # Aleatorizar la lista
-    if self.round_number == 1:
-        for g in self.get_groups():
-            randomized_list = random.sample(C.PAGOS_H, len(C.PAGOS_H))
-        # Crear una nueva constante con la resta de 20000 menos cada elemento en la lista aleatorizada
-            self.session.vars['pagos_h_list'] = randomized_list
-            self.session.vars['pagos_p_list'] = [20000 - x for x in randomized_list]
-            g.order_pagos_H = ",".join(map(str, self.session.vars['pagos_h_list']))
-            g.order_pagos_P = ",".join(map(str, self.session.vars['pagos_p_list']))
-
+### Pages ###
 class Introduction(Page):
-    def is_displayed(self):
-        # Mostrar solo en la primera ronda
-        return self.round_number == 1
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == 1
+    
+    def before_next_page(player:Player, timeout_happened):
+        player.participant.vars['levels'] = player.group.levels
+        player.participant.vars['selected_round'] = player.group.selected_round
 
 class Decision(Page):
-    timeout_seconds = 30
     form_model = 'player'
-    form_fields = ['competir']
-    timer_text = '''Recuerde, si su tiempo se agota, se asumirá que elige la estrategia H (Competitiva). 
-    El tiempo restante para terminar la ronda es:'''
+    form_fields = ['cooperate']
 
     @staticmethod
-    def before_next_page(player, timeout_happened):
-        if timeout_happened:
-            # you may want to fill a default value for any form fields,
-            # because otherwise they may be left null.
-            player.competir = True
-    def vars_for_template(self):
-        return dict(
-            pago_H_A = self.session.vars['pagos_h_list'][self.round_number - 2],
-            pago_P_A = self.session.vars['pagos_p_list'][self.round_number - 2]
-        )
-    def is_displayed(self):
-        # Mostrar solo en la primera ronda
-        return self.round_number > 1
+    def vars_for_template(player: Player):
+        level = player.participant.vars['levels']
+        level = level.split(",")
+        level = level[player.round_number - 1]
+        level = int(level)
+        return {
+            'level_number': player.round_number,
+            'x_value': C.X_VALUES[level],
+            'y_value': C.Y_VALUES[level],
+            'my_nickname': "Participante {}".format(player.id_in_group)
+        }
 
 class ResultsWaitPage(WaitPage):
     after_all_players_arrive = set_payoffs
-    def is_displayed(self):
-        # Mostrar solo en la primera ronda
-        return self.round_number > 1
 
-class Results(Page):
+class TotalResult(Page):
     form_model = 'player'
+    form_fields = ['descrip_cooperate']
+    @staticmethod
+    def is_displayed(player: Player):
+        return player.round_number == C.NUM_ROUNDS
+
     @staticmethod
     def vars_for_template(player: Player):
-        opponent = other_player(player)
-        return dict(
-            ronda = player.round_number,
-            opponent=opponent,
-            same_choice=player.competir == opponent.competir,
-            mi_decision=player.field_display('competir'),
-            opponent_decision=opponent.field_display('competir'),
-        )
-    def is_displayed(self):
-        # Mostrar solo en la primera ronda
-        return self.round_number > 1
+        selected_round = player.participant.vars['selected_round']
+        selected_round_payoff = player.in_round(selected_round).payoff
+        
+        return {
+            "selected_round": selected_round,
+            "final_payoff": selected_round_payoff
+        }
     
-page_sequence = [
-    Introduction, 
-    Decision, 
-    ResultsWaitPage, 
-    Results
-]
+    def before_next_page(player: Player, timeout_happened):
+        
+        player.participant.vars['final_payoff'] = player.in_round(player.participant.vars['selected_round']).payoff
+
+page_sequence = [Introduction, Decision, ResultsWaitPage, TotalResult]

@@ -1,70 +1,56 @@
+<style>
+    th, td {
+        text-align: center;
+        vertical-align: middle; 
+    }
+    .cell-a, .cell-b, .cell-usted {
+        width: 70px;
+    }
+</style>
+
 <div class="card bg-light m-3">
     <div class="card-body">
 
-    <style>
-        .justified-text {
-            text-align: justify;
-        }
-        .center-text {
-            text-align: center;
-        }
-    </style>
 
-    <h3 class="center-text">
-        Decisión grupal
-    </h3>
-
-    <p class="justified-text">
-        Durante esta etapa, usted será emparejado con la persona con la que debatió en la anterior etapa y tomarán decisiones durante cinco (5) rondas.
-        En cada ronda, van a negociar la manera en la que se dividirán un monto de {{ C.MONTO }} UE. 
-        Para hacer la negociación, cada uno tomará decisiones al mismo tiempo y de manera privada. 
-        Cada uno deberá escoger entre dos estrategias de negociación a las que llamaremos <b>estrategia H</b> y <b>estrategia P</b>.
-        Si escoges la estrategia H, actuarás de manera <b>competitiva</b>, mientras que al escoger la estrategia P, actuarás de manera <b>cooperativa</b>.
+    <p>
+        Durante esta etapa, será emparejado nuevamente con la persona con la que intercambió argumentos en la etapa anterior. Esta persona permanecerá como su pareja a lo largo de cuatro situaciones diferentes. Al final, se seleccionará una de estas cuatro situaciones al azar para determinar sus pagos y los de la otra persona en esta etapa. 
     </p>
-    <p class="justified-text">
-        En cada ronda, sus pagos estarán determinados por la manera en que ambos actúen, de la siguiente forma:
+    <p>
+        En cada situación, los pagos son distintos. Ambos participantes elegirán simultáneamente entre dos opciones: A o B. Las ganancias para cada situación están representadas en una tabla y dependerán de la opción que usted y la otra persona elijan. Los pagos que podrá recibir, según las elecciones realizadas, están resaltados en <span style="color:blue">azul</span>. En otras palabras, los números a la IZQUIERDA en cada caja son sus pagos posibles dependiendo la combinación de elecciones.  
     </p>
+    <p>Las letras X e Y en la tabla representan cantidades que varían en cada situación. Antes de tomar su decisión, se le mostrará la cantidad que le corresponde a X e Y para cada situación. </p>
 
-    <ol class="justified-text">
-        <li>Si ambos se comportan de forma cooperativa (estrategia P), no se enfrentarán entre sí y dividirán el monto por igual (10000 para cada uno).</li>
-        <li>Si ambos actúan de forma competitiva (estrategia H), su negociación será más agresiva, desgastante y tendrá costos de 5000 UE que serán descontadas del monto disponible, por lo que solo obtendrán 7500 UE para cada uno.</li>
-        <li>Si uno actúa de forma competitiva (estrategia H) y el otro de forma cooperativa (estrategia P), la persona competitiva tendrá una <b>ventaja</b> y se llevar una <b>cantidad X</b> mayor a lo que ganaría la persona cooperativa, que llamaremos <b>cantida Y</b>. Esta cantidad varía de manera aleatoria en cada ronda, pero siempre mantendrá la relación <b>X>Y</b>.</li>
-    </ol>
-
-    <p class="justified-text"><i>La tabla resume los pagos que tendrían según las estrategias escogidas. 
-        En cada celda, la cantidad de la izquierda es el pago para ti, mientras que la cantidad de la derecha
-        es el pago para la otra persona.</i></p>
-
-    <table class='table table-bordered text-center'
-           style='width: auto; margin: auto'>
+    <table class='table table-bordered text-center'style='width: auto; margin: auto'>
         <tr>
             <th colspan=2 rowspan=2></th>
-            <th colspan=2>Estrategia del otro participante</th>
+            <th colspan=2>Pareja</th>
         </tr>
         <tr>
-            <th>H (Competitiva)</th>
-            <th>P (Cooperativa)</th>
+            <th>A</th>
+            <th>B</th>
         </tr>
         <tr>
-            <th rowspan=2><span style="transform: rotate(-90deg);">Usted</span></th>
-            <th>H (Competitiva)</th>
-            <td>{{ C.PAGO_COMP }}, {{ C.PAGO_COMP }}</td>
-            <td> X, Y </td>
+            <th rowspan="2" class="cell-usted"><span>Usted</span></th>
+            <th class="cell-b">A</th>
+            <td><br>[<span style="color:blue"><b>16000</b></span>, 16000]</td>
+            <td><br>[<span style="color:blue"><b>X</b></span>, Y]</td>
         </tr>
         <tr>
-            <th>P (Cooperativa)</th>
-            <td> Y , X </td>
-            <td>{{ C.PAGO_COO }}, {{ C.PAGO_COO }}</td>
+            <th class="cell-b">B</th>
+            <td><br>[<span style="color:blue"><b>Y</b></span>, X]</td>
+            <td><br>[<span style="color:blue"><b>4000</b></span>, 4000]</td>
         </tr>
     </table>
 
-    <p>
-         
-    </p>
-    <p class="justified-text">
-        En cada ronda, <b>tendrá 30 SEGUNDOS para elegir su estrategia</b>. 
-        Si usted no elige una estrategia, el sistema tomará automáticamente la estrategia <b>H (Competitiva)</b>.
-        Los resultados se mencionarán después de que ambos hayan tomado su decisión.
-    </p>
-</div>
+    <p>En cada situación, sus ganancias dependerán de las opciones que usted y la otra persona elijan:   </p>
+
+    <nav>
+        <ol>
+            <li>Si ambos eligen A, cada uno recibirá 16.000 pesos. </li>
+            <li>Si ambos eligen B, cada uno recibirá 4.000 pesos.</li>
+            <li>Si uno elige A y el otro B, el participante que elige A recibirá la cantidad X, y quien elija B recibirá la cantidad Y. </li>
+        </ol>
+    </nav>
+
+    </div>
 </div>

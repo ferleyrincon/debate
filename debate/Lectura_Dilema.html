@@ -1,35 +1,32 @@
 {{ extends 'global/Page.html' }}
-{{ block title }}Etapa 1 - Intercambio de argumentos{{ endblock }}
+{{ block title }} ETAPA 1 {{ endblock }}
 
 {{ block content }}
 
-<p>
-    Por favor, lea la siguiente situación:
-</p>
+<b>Lea detenidamente la siguiente SITUACIÓN:</b>
 
-<div style="border: 2px solid #4CAF50; padding: 20px; margin: 20px 0; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px;">
+<div style="border: 2px solid #000000; padding: 20px; margin: 20px 0; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); border-radius: 8px;">
     <p style="text-align: justify;">
-        La alcaldía municipal está tomando decisiones sobre el manejo de las basuras en una ciudad. Las basuras regadas en la calle están afectando la imagen de la ciudad y generando problemas sanitarios. Para solucionar este problema, se han implementado nuevas regulaciones ambientales y se ha aumentado el gasto público para mejorar la recolección de basuras. Sin embargo, esto ha generado un conflicto entre las empresas de aseo y los recicladores informales. 
+        Un grupo de estudiantes de un colegio cercano a la Ciénaga Grande de Santa Marta está preocupado por la contaminación del agua. Los residuos arrojados a la Ciénaga generan riesgos sanitarios y afectan la biodiversidad. Para abordar este problema, los estudiantes propusieron hacer pública información sobre la contaminación en la Ciénaga. Sin embargo, esta iniciativa ha generado un conflicto con grupos armados presentes en la región. 
     </p>
     <p style="text-align: justify;">
-        Las empresas de aseo han propuesto prohibir que los recicladores informales manipulen las basuras en la calle. Las empresas acusan a los recicladores informales de romper las bolsas de basura y dificultar las labores de recolección. Por su parte, los recicladores acusan a las empresas de no separar adecuadamente las basuras y querer dejarlos sin trabajo.  
+        Los grupos armados se benefician de actividades ilegales que afectan la calidad del agua en la Ciénaga.  Por un lado, los estudiantes acusan a algunos miembros de la comunidad de hacer actividades ilegales, lo que afecta la calidad de vida de todos. Por otro lado, los grupos armados les han pedido a los estudiantes que no se involucren más y se enfoquen en otros problemas sociales.  
     </p>
     <p style="text-align: justify;">
-        La propuesta de prohibición beneficiaría a las empresas de aseo al facilitar la recolección y centralizar el manejo de los residuos, pero dejaría a los recicladores informales en una situación de vulnerabilidad económica. Además, los recicladores podrían organizar protestas frente a las instalaciones de las empresas, lo que podría interrumpir el funcionamiento de las operaciones de recolección de basura. 
+        Las amenazas de los grupos armados han llevado a los estudiantes a cuestionarse si vale la pena seguir trabajando en la reducción de la contaminación de la Ciénaga. No obstante, las denuncias de los estudiantes han despertado el interés de otros miembros de la comunidad, quienes también han decidido unirse a las actividades lideradas por ellos.
     </p>
     <p style="text-align: justify;">
-        A pesar de las diferencias, existe la posibilidad de que ambas partes lleguen a un acuerdo. Las empresas y los recicladores podrían colaborar si se establecieran mecanismos para proporcionar a los recicladores informales las herramientas y formación necesarias para realizar su trabajo sin que la basura quede dispersa en las calles. Para esto, la alcaldía ha propuesto crear mesas de diálogo para facilitar un trabajo coordinado entre las empresas de aseo y los recicladores informales, con el objetivo de mejorar la gestión de los residuos. Sin embargo, hasta el momento, ha sido difícil llegar a un acuerdo que satisfaga a ambas partes. 
+        La contaminación del agua en la Ciénaga ha puesto en riesgo la salud de los estudiantes, sus familias y otros miembros de la comunidad. Sin embargo, continuar denunciando las actividades ilegales responsables de la contaminación también pone en riesgo la vida de los propios estudiantes.
     </p>
 </div>
 
-<h2>Pregunta</h2>
+<b>Posición inicial:</b>
 
-<b>¿La Alcaldía debe prohibir a los recicladores informales que manipules basura en las calles?</b>
 
 <form method="post">
     <!-- Campo para 'posicion' -->
     <div>
-        <p>{{ form.posicion_afin.label }}</p>
+        <p style="margin-top: 15px;">{{ form.posicion_afin.label }}</p>
         {{ form.posicion_afin }}
     </div>
     
