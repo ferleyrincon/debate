@@ -1,0 +1,56 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Code for: Arguing both sides changes cooperation by less than the effect of communication itself: a preregistered null result, with exploratory bounds on peer rewards"
+abstract: "oTree 5.10.4 code of a lab experiment with 148 university students in 74 fixed pairs at REBEL, Universidad del Rosario, Bogota (26 and 29 November and 2 December 2024): an argument exchange on a moral dilemma about reporting illegal pollution under armed threats, a paid ranking of four arguments, and four one-shot conflict games with the same partner, followed by Davis's Interpersonal Reactivity Index and a background survey. Preregistration AsPredicted #201318. Contains no participant data."
+authors:
+  - family-names: "Rincón"
+    given-names: "Ferley"
+    affiliation: "Fundación Memories"
+  - family-names: "García P."
+    given-names: "José David"
+    affiliation: "Universidad Francisco de Paula Santander Ocaña"
+# TODO (Ferley): the final author list and CRediT roles of the working paper are still
+# open (candidates in the paper's contribution note: Carrillo, Villarreal, Bermúdez,
+# Rincón, Cortés). The two names above are the authors of this repository's code and
+# of the repository itself, taken from the git history.
+version: "1.0.0"
+date-released: "2026-11-22"
+license: MIT
+repository-code: "https://github.com/ferleyrincon/debate"
+keywords:
+  - oTree
+  - deliberation
+  - argument quality
+  - peer evaluation
+  - cooperation
+  - conflict game
+  - lab experiment
+references:
+  - type: article
+    title: "oTree—An open-source platform for laboratory, online, and field experiments"
+    authors:
+      - family-names: "Chen"
+        given-names: "Daniel L."
+      - family-names: "Schonger"
+        given-names: "Martin"
+      - family-names: "Wickens"
+        given-names: "Chris"
+    journal: "Journal of Behavioral and Experimental Finance"
+    volume: 9
+    start: 88
+    end: 97
+    year: 2016
+    doi: "10.1016/j.jbef.2015.12.001"
+  - type: article
+    title: "Measuring individual differences in empathy: Evidence for a multidimensional approach"
+    authors:
+      - family-names: "Davis"
+        given-names: "Mark H."
+    journal: "Journal of Personality and Social Psychology"
+    volume: 44
+    issue: 1
+    start: 113
+    end: 126
+    year: 1983
+    doi: "10.1037/0022-3514.44.1.113"
