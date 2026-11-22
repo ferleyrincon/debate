@@ -11,3 +11,10 @@ __pycache__/
 *.py[cod]
 .DS_Store
 *.otreezip
+# datos de participantes y pilotos: no versionar
+*.csv
+*.xlsx
+prueba piloto/
+yaml_backup.gz
+.Rhistory
+
