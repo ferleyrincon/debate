@@ -1,0 +1,17 @@
+participant.id_in_session,participant.code,participant.label,participant._is_bot,participant._index_in_pages,participant._max_page_index,participant._current_app_name,participant._current_page_name,participant.time_started_utc,participant.visited,participant.mturk_worker_id,participant.mturk_assignment_id,participant.payoff,player.id_in_group,player.role,player.payoff,player.cooperate,player.descrip_cooperate,group.id_in_subsession,group.levels,group.selected_round,subsession.round_number,session.code,session.label,session.mturk_HITId,session.mturk_HITGroupId,session.comment,session.is_demo
+1,2tdut03y,,1,40,39,results,Final,2026-11-22 19:49:56.455345,1,,,28000.0,1,,4000.0,0,,1,"1,0,2,3",4,1,svfor7y8,,,,,0
+2,16prqfad,,1,40,39,results,Final,2026-11-22 19:49:56.485413,1,,,28000.0,2,,4000.0,0,,1,"1,0,2,3",4,1,svfor7y8,,,,,0
+3,6pnh8lxn,,1,40,39,results,Final,2026-11-22 19:49:56.496571,1,,,40000.0,1,,8000.0,0,,2,"0,3,2,1",4,1,svfor7y8,,,,,0
+4,p435hktw,,1,40,39,results,Final,2026-11-22 19:49:56.528747,1,,,16000.0,2,,8000.0,1,,2,"0,3,2,1",4,1,svfor7y8,,,,,0
+1,2tdut03y,,1,40,39,results,Final,2026-11-22 19:49:56.455345,1,,,28000.0,1,,16000.0,1,,1,"1,3,2,0",2,2,svfor7y8,,,,,0
+2,16prqfad,,1,40,39,results,Final,2026-11-22 19:49:56.485413,1,,,28000.0,2,,16000.0,1,,1,"1,3,2,0",2,2,svfor7y8,,,,,0
+3,6pnh8lxn,,1,40,39,results,Final,2026-11-22 19:49:56.496571,1,,,40000.0,1,,4000.0,0,,2,"3,0,1,2",4,2,svfor7y8,,,,,0
+4,p435hktw,,1,40,39,results,Final,2026-11-22 19:49:56.528747,1,,,16000.0,2,,4000.0,0,,2,"3,0,1,2",4,2,svfor7y8,,,,,0
+1,2tdut03y,,1,40,39,results,Final,2026-11-22 19:49:56.455345,1,,,28000.0,1,,4000.0,0,,1,"3,1,0,2",4,3,svfor7y8,,,,,0
+2,16prqfad,,1,40,39,results,Final,2026-11-22 19:49:56.485413,1,,,28000.0,2,,4000.0,0,,1,"3,1,0,2",4,3,svfor7y8,,,,,0
+3,6pnh8lxn,,1,40,39,results,Final,2026-11-22 19:49:56.496571,1,,,40000.0,1,,4000.0,0,,2,"2,1,0,3",1,3,svfor7y8,,,,,0
+4,p435hktw,,1,40,39,results,Final,2026-11-22 19:49:56.528747,1,,,16000.0,2,,4000.0,0,,2,"2,1,0,3",1,3,svfor7y8,,,,,0
+1,2tdut03y,,1,40,39,results,Final,2026-11-22 19:49:56.455345,1,,,28000.0,1,,4000.0,0,Elegi pensando en lo que haria la otra persona.,1,"1,0,3,2",3,4,svfor7y8,,,,,0
+2,16prqfad,,1,40,39,results,Final,2026-11-22 19:49:56.485413,1,,,28000.0,2,,4000.0,0,Elegi pensando en lo que haria la otra persona.,1,"1,0,3,2",3,4,svfor7y8,,,,,0
+3,6pnh8lxn,,1,40,39,results,Final,2026-11-22 19:49:56.496571,1,,,40000.0,1,,24000.0,0,Elegi pensando en lo que haria la otra persona.,2,"2,0,1,3",4,4,svfor7y8,,,,,0
+4,p435hktw,,1,40,39,results,Final,2026-11-22 19:49:56.528747,1,,,16000.0,2,,0.0,1,Elegi pensando en lo que haria la otra persona.,2,"2,0,1,3",4,4,svfor7y8,,,,,0
