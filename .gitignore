@@ -1,20 +1,38 @@
-venv
-staticfiles
-./db.sqlite3
-.idea
-*~
+# local database and exported data (never commit participant data)
+db.sqlite3
 *.sqlite3
-_static_root
-_bots*s
-__temp*
-__pycache__/
-*.py[cod]
-.DS_Store
-*.otreezip
-# datos de participantes y pilotos: no versionar
+*.json
 *.csv
 *.xlsx
+*.otreezip
+*.gz
+
+# pilot data and exports that used to live in this repo (removed in 2026)
 prueba piloto/
 yaml_backup.gz
+
+# Python / virtual environments
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+
+# oTree / Django build artifacts
+staticfiles/
+_static_root/
+__temp_static_root/
+__temp*
+_bots*s
+
+# editors and OS
+.idea/
+.vscode/
+*~
+.~*
+.DS_Store
+.env
 .Rhistory
 
+# synthetic bot output is versioned on purpose (never real data)
+!sample_data/*.csv
